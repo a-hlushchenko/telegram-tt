@@ -1,17 +1,24 @@
 .Tab {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  height: 60px;
   flex: 1 1 auto;
+  align-items: center;
   appearance: none;
   background: none;
   width: auto;
   margin: 0;
   border: none;
-  padding: 0.625rem 1.125rem;
+  padding: 0.625rem 0.625rem;
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-secondary);
   border-top-left-radius: var(--border-radius-messages-small);
   border-top-right-radius: var(--border-radius-messages-small);
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  transition: background-color 0.5s ease-in-out;
 
   &,
   &:active,
@@ -24,31 +31,32 @@
 
     @media (hover: hover) {
       &:not(&--active):hover {
-        background: var(--color-interactive-element-hover);
+        background-color: var(--color-interactive-element-hover);
       }
     }
 
     @media (max-width: 600px) {
       &:not(&--active):active {
-        background: var(--color-interactive-element-hover);
+        background-color: var(--color-interactive-element-hover);
       }
     }
   }
 
   &--active {
+    background-color: var(--color-interactive-element-hover);
     cursor: var(--custom-cursor, default);
     color: var(--color-primary);
 
     .platform {
-      opacity: 1 !important;
+      opacity: 0 !important;
     }
   }
 
   .Tab_inner {
-    position: relative;
     display: flex;
     align-items: center;
     white-space: nowrap;
+    font-size: 13px;
     gap: 1px; // Prevent custom emoji sticking to the text
   }
 
@@ -65,6 +73,9 @@
     font-weight: var(--font-weight-medium);
     text-align: center;
     flex-shrink: 0;
+    position: absolute;
+    top: 4px;
+    right: 4px;
 
     body.is-ios &,
     body.is-macos & {
